@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=a_a-6&&y(48j1s@ok0yaq^vv)qz=2g6(%(f-&4o$dm-aipa=7'
+SECRET_KEY = 'django-insecure-533!zebkdak0p$%d)as#p%h6#@uwjk=h%8qub_*-&^j95oau9c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # myapp 등록
-    'myapp'
+    'myapp',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # 템플릿 디렉토리 설정
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',  # PostgreSQL 데이터베이스 사용
+        'NAME': 'mydatabases',  # 데이터베이스 이름
+        'USER': 'postgres',  # 데이터베이스 사용자
+        'PASSWORD': 'admin1234',  # 데이터베이스 비밀번호
+        'HOST': 'localhost',  # 데이터베이스 호스트
+        'PORT': '5432',  # 데이터베이스 포트
     }
 }
 
@@ -122,3 +126,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 로그인 후 리다이렉트 URL 설정
+# LOGIN_REDIRECT_URL = '/posts/'  # 로그인 후 이동할 URL
+# 로그아웃 후 리다이렉트 URL 설정
+LOGOUT_REDIRECT_URL = '/posts/login'  # 로그아웃 후 이동할 URL
+# 로그인 URL 설정
+LOGIN_URL = '/posts/login/'  # 로그인 페이지 URL
