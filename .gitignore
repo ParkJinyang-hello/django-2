@@ -1,0 +1,14 @@
+*.db
+*.sqlite3
+python-*.db
+
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+# Ignore virtual environment directories
+env/
+venv/
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+# Ignore log files
+*.log
